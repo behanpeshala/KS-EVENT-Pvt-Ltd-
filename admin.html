@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | KS EVENT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            padding-top: 0;
+        }
+
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: #111;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box input {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        #dashboard-content {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .admin-panel {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item-list li {
+            background: #222;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-list button {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .item-list button:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login-section" class="login-container">
+        <div class="login-box">
+            <h2 style="color: #FFD700; margin-bottom: 20px;">Admin Login</h2>
+            <input type="password" id="admin-pass" placeholder="Enter Password">
+            <button class="btn btn-primary" onclick="login()" style="width: 100%;">Login</button>
+            <p style="margin-top: 15px; font-size: 13px; color: #888;">(Demo Password: ksadmin123)</p>
+            <a href="index.html" style="color: #FFD700; display: block; margin-top: 20px; text-decoration: none;">&larr;
+                Back to Website</a>
+        </div>
+    </div>
+
+    <div id="dashboard-content" class="dashboard-container">
+        <div class="admin-header">
+            <h2><span class="highlight">KS EVENT</span> Dashboard</h2>
+            <div>
+                <a href="index.html" class="btn btn-outline" style="margin-right: 10px;">View Site</a>
+                <button class="btn btn-primary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <h3 style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;">Add New Work / Event
+            </h3>
+            <form id="add-work-form">
+                <div class="form-group">
+                    <label>Event Title</label>
+                    <input type="text" id="work-title" required placeholder="e.g. Grand Wedding at Hilton">
+                </div>
+                <div class="form-group">
+                    <label>Image URL (Optional)</label>
+                    <input type="text" id="work-image"
+                        placeholder="https://example.com/image.jpg (Leave empty for default image)">
+                </div>
+                <div class="form-group">
+                    <label>Facebook Post Link</label>
+                    <input type="url" id="work-fb" required placeholder="https://facebook.com/...">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Add Event to Portfolio</button>
+            </form>
+        </div>
+
+        <div class="admin-panel">
+            <h3 style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;">Manage Events</h3>
+            <ul class="item-list" id="manage-list">
+                <!-- Items populated by JS -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
